@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Website</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <h2>Welcome, {username}!</h2>
+    <p>Your Achievements: {achievements}</p>
+    <h3>Available Games</h3>
+    <div class="game">
+        <img src="img/game1.png" alt="Game 1">
+        <button onclick="startGame1()">Start Game 1</button>
+    </div>
+    <div class="game">
+        <img src="img/game2.png" alt="Game 2">
+        <button onclick="startGame2()">Start Game 2</button>
+    </div>
+    <button onclick="logout()">Logout</button>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
