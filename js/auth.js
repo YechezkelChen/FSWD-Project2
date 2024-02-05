@@ -10,6 +10,7 @@ function loginUser(username, password, users) {
 
     // Store the user and expiration time in local storage
     localStorage.setItem('current_user', JSON.stringify({ username: user.username, expirationTime }));
+    
     return user;
 }
 

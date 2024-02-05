@@ -1,0 +1,31 @@
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+#welcome_username {
+    font-weight: bold;
+}
+
+.game {
+    margin-bottom: 20px;
+}
+
+.game img {
+    max-width: 100%;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}

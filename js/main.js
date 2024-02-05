@@ -1,4 +1,3 @@
-// main.js
 document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -20,22 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   function loadMainContent(user) {
-    console.log(document.getElementById('main-content'))
-    const mainContent = document.getElementById('main-content');
-    console.log(mainContent)
-    mainContent.innerHTML = loadHTMLContent('html/mainContent.html');
-  
-    document.getElementById('username').textContent = user.username;
-    console.log(user)
-    console.log(user.username)
-    document.getElementById('achievements').textContent = user.achievements.join(', ');
+    loadHTMLContent('html/mainContent.html', function () {
+        document.getElementById('welcome_username').textContent = user.username;
+        document.getElementById('achievements').textContent = user.achievements.join(', ');
+      });
   }
   
-  function loadHTMLContent(filename) {
+  function loadHTMLContent(filename, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         document.getElementById('main-content').innerHTML = xhr.responseText;
+  
+        // Call the callback function if provided
+        if (callback) {
+          callback();
+        }
       }
     };
     xhr.open('GET', filename, true);
