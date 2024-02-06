@@ -11,15 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   function loadLoginPage() {
-    loadHTMLContent('/html/login.html');
+    loadHTMLContent('../html/login.html');
   }
   
   function loadRegistrationPage() {
-    loadHTMLContent('/html/registration.html');
+    loadHTMLContent('../html/registration.html');
   }
   
   function loadMainContent(user) {
-    loadHTMLContent('/html/mainContent.html', function () {
+    loadHTMLContent('../html/mainContent.html', function () {
         document.getElementById('welcome_username').textContent = user.username;
         document.getElementById('achievements').textContent = user.achievements.join(', ');
       });
