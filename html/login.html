@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Website</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/mainContent.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/registration.css">
+    <title>Game Site Login</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
-
 <body>
-    <h2>Login</h2>
-    <form id="login-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="button" onclick="login()">Login</button>
-    </form>
-    <p>Don't have an account? <a href="#" onclick="loadRegistrationPage()">Register here</a>.</p>
-
-    <script src="js/utils.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/games.js"></script>
-    <script src="js/main.js"></script>
+    <section class="forms-section">
+        <h1 class="section-title">Welcom to login page</h1>
+        <div class="forms">
+          <div class="form-wrapper is-active">
+            <button type="button" class="switcher switcher-login">
+              Login
+              <span class="underline"></span>
+            </button>
+            <form class="form form-login">
+              <fieldset>
+                <legend>Please, enter your email and password for login.</legend>
+                <div class="input-block">
+                  <label for="login-username">User-name</label>
+                  <input id="login-username" type="text" required>
+                </div>
+                <div class="input-block">
+                  <label for="login-password">Password</label>
+                  <input id="login-password" type="password" required>
+                </div>
+              </fieldset>
+              <button type="submit" class="btn-login" onclick="login()">Login</button>
+            </form>
+          </div>
+          <div class="form-wrapper">
+            <button type="button" class="switcher switcher-signup">
+              Sign Up
+              <span class="underline"></span>
+            </button>
+            <form class="form form-signup">
+              <fieldset>
+                <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+                <div class="input-block">
+                  <label for="signup-username">User-name</label>
+                  <input id="signup-username" type="email" required>
+                </div>
+                <div class="input-block">
+                  <label for="signup-password">Password</label>
+                  <input id="signup-password" type="password" required>
+                </div>
+                <div class="input-block">
+                  <label for="signup-password-confirm">Confirm password</label>
+                  <input id="signup-password-confirm" type="password" required>
+                </div>
+              </fieldset>
+              <button type="submit" onclick="register()" class="btn-signup">Continue</button>
+            </form>
+          </div>
+        </div>
+    </section>
+    <script src="../js/utils.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/games.js"></script>
+    <script src="../js/main.js"></script>
 </body>
-
 </html>
