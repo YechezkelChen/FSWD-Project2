@@ -10,7 +10,7 @@ function loginUser(username, password, users) {
 
     // Store the user and expiration time in local storage
     localStorage.setItem('current_user', JSON.stringify({ username: user.username, expirationTime }));
-    
+
     return user;
 }
 
@@ -53,11 +53,13 @@ function saveUsersToLocalStorage(users) {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
-const switchers = [...document.querySelectorAll('.switcher')]
+function updateSwitchers() {
+    const switchers = [...document.querySelectorAll('.switcher')]
 
-switchers.forEach(item => {
-	item.addEventListener('click', function() {
-		switchers.forEach(item => item.parentElement.classList.remove('is-active'))
-		this.parentElement.classList.add('is-active')
-	})
-})
+    switchers.forEach(item => {
+        item.addEventListener('click', function () {
+            switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+            this.parentElement.classList.add('is-active')
+        })
+    })
+}
