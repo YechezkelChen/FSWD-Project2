@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Website</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/mainContent.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/registration.css">
+    <link rel="stylesheet" href="../css/mainContent.css">
 </head>
 
 <body>
@@ -20,10 +17,11 @@
         <button onclick="startGame1()">Start Game 1</button>
     </div>
     <div class="game">
-        <img src="../images/game2.png" alt="Game 2">
+        <img src="../images/flappy_basket.jpg" alt="Game 2">
         <button onclick="startGame2()">Start Game 2</button>
+        <iframe src="../html/flapyBurds.html" frameborder="0"></iframe>
     </div>
-    <button onclick="logout()">Logout</button>
+    <button id="logout_button" onclick="logout()">Logout</button>
 
     <script src="js/utils.js"></script>
     <script src="js/auth.js"></script>
