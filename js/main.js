@@ -67,5 +67,6 @@ function register() {
 
 function logout() {
   localStorage.removeItem('current_user');
+  localStorage.removeItem('record');
   loadLoginPage();
 }
