@@ -16,12 +16,12 @@ const game = (function (ball, btn, restart, pointElId = "point") {
   
       constructor(ball, btn, pointElId = "point", restart = "restart") {
         // elements
+        this.#initializeRecord()
         this.btn = document.getElementById(btn);
         this.pointEl = document.getElementById(pointElId);
         this.screen = document.querySelector(".screen");
         this.restartEl = document.getElementById(restart);
         this.restartEl.parentNode.style.visibility = "hidden";
-  
         // Events
         this.btn.addEventListener("click", this.#btnOnClick.bind(this));
         this.restartEl.addEventListener("click", this.#restart.bind(this));
@@ -153,6 +153,27 @@ const game = (function (ball, btn, restart, pointElId = "point") {
             return true;
         }
       }
+      
+      #initializeRecord(){
+        const recordElement = document.getElementById('record');
+        const currentUserData = JSON.parse(localStorage.getItem('current_user'));
+        const users = JSON.parse(localStorage.getItem('users'));
+        if (currentUserData) {
+          const userIndex = users.findIndex(u => u.username === currentUserData.username);
+          if (userIndex !== -1) {
+            if(users[userIndex].scores[0] > 0){
+              const recordElement = document.getElementById('record');
+              recordElement.innerText = JSON.parse(users[userIndex].scores[0]);
+            }
+            else 
+              recordElement.innerText = 0;
+          } else {
+              console.error("User not found in the users array.");
+            }
+          } else {
+              console.error("currentUserData is null or undefined.");
+            }
+      }
     }
   
     class Ball {
@@ -220,16 +241,29 @@ const game = (function (ball, btn, restart, pointElId = "point") {
     localStorage.setItem('record', '0');
   }
 
-  // Retrieve the record from local storage
-  let record = parseFloat(localStorage.getItem('record'));
-  const recordElement = document.getElementById('record');
-  recordElement.innerText = record;
-
   // Function to update the record if necessary
   function updateRecord(points) {
+    const recordElement = document.getElementById('record');
     if (points > record) {
       record = points;
       recordElement.innerText = record;
       localStorage.setItem('record', record);
+
+       // Update the users array
+      const currentUserData = JSON.parse(localStorage.getItem('current_user'));
+      const users = JSON.parse(localStorage.getItem('users'));
+      if (currentUserData) {
+        const userIndex = users.findIndex(u => u.username === currentUserData.username);
+        if (userIndex !== -1) {
+            const record = parseFloat(document.getElementById('record').innerText);
+            const newScores = record;
+            users[userIndex].scores[0] = record
+            localStorage.setItem('users', JSON.stringify(users));
+        } else {
+              console.error("User not found in the users array.");
+        }
+      } else {
+          console.error("currentUserData is null or undefined.");
+      }
     }
   }
