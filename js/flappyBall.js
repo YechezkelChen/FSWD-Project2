@@ -241,10 +241,14 @@ const game = (function (ball, btn, restart, pointElId = "point") {
     localStorage.setItem('record', '0');
   }
 
+  
+
   // Function to update the record if necessary
   function updateRecord(points) {
+    let record = parseFloat(localStorage.getItem('record'));
     const recordElement = document.getElementById('record');
     if (points > record) {
+      console.error("lol.");
       record = points;
       recordElement.innerText = record;
       localStorage.setItem('record', record);
@@ -256,7 +260,6 @@ const game = (function (ball, btn, restart, pointElId = "point") {
         const userIndex = users.findIndex(u => u.username === currentUserData.username);
         if (userIndex !== -1) {
             const record = parseFloat(document.getElementById('record').innerText);
-            const newScores = record;
             users[userIndex].scores[0] = record
             localStorage.setItem('users', JSON.stringify(users));
         } else {
