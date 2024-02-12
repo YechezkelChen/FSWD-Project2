@@ -248,7 +248,6 @@ const game = (function (ball, btn, restart, pointElId = "point") {
     let record = parseFloat(localStorage.getItem('record'));
     const recordElement = document.getElementById('record');
     if (points > record) {
-      console.error("lol.");
       record = points;
       recordElement.innerText = record;
       localStorage.setItem('record', record);

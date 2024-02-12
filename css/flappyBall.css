@@ -28,7 +28,8 @@ button {
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  height: 63vh;
+  height: auto;
+  margin-top: 20px;
 }
 
 .container {
