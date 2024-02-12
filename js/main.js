@@ -17,7 +17,7 @@ function loadLoginPage() {
 function loadMainContent(user) {
   loadHTMLContent('../html/mainContent.html', function () {
     document.getElementById('welcome_username').textContent = user.username;
-    document.getElementById('achievements').textContent = user.achievements.join(', ');
+    document.getElementById('scores').textContent = user.scores;
   });
 }
 
