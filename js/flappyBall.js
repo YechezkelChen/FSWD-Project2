@@ -51,8 +51,6 @@ const game = (function (ball, btn, restart, pointElId = "point") {
     }
 
     #restart() {
-      const points = parseFloat(document.getElementById('point').innerText);
-      updateRecord(points);
       this.#points = 0;
       this.pointEl.innerText = this.#points;
       this.btn.innerText = "Start";
@@ -69,6 +67,8 @@ const game = (function (ball, btn, restart, pointElId = "point") {
       this.#ball.die();
       this.restartEl.parentNode.style.visibility = "visible";
       this.btn.removeEventListener("click", this.#btnOnClick.bind(this));
+      const points = parseFloat(document.getElementById('point').innerText);
+      updateRecord(points);
     }
 
     // generating a div element which has classes and styles of a block
@@ -161,9 +161,9 @@ const game = (function (ball, btn, restart, pointElId = "point") {
       if (currentUserData) {
         const userIndex = users.findIndex(u => u.username === currentUserData.username);
         if (userIndex !== -1) {
-          if (users[userIndex].scores[0] > 0) {
+          if (users[userIndex].scores['flappy'] > 0 ) {
             const recordElement = document.getElementById('record');
-            recordElement.innerText = JSON.parse(users[userIndex].scores[0]);
+            recordElement.innerText = JSON.parse(users[userIndex].scores['flappy']);
           }
           else
             recordElement.innerText = 0;
@@ -257,7 +257,7 @@ function updateRecord(points) {
       const userIndex = users.findIndex(u => u.username === currentUserData.username);
       if (userIndex !== -1) {
         const record = parseFloat(document.getElementById('record').innerText);
-        users[userIndex].scores[0] = record
+        users[userIndex].scores['flappy'] = record
         localStorage.setItem('users', JSON.stringify(users));
       } else {
         console.error("User not found in the users array.");

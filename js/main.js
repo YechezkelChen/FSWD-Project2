@@ -17,7 +17,7 @@ function loadLoginPage() {
 function loadMainContent(user) {
   loadHTMLContent('../html/mainContent.html', function () {
     document.getElementById('welcome_username').textContent = user.username;
-    document.getElementById('scores').textContent = user.scores;
+    userScores(user)
   });
 }
 
@@ -69,4 +69,19 @@ function logout() {
   localStorage.removeItem('current_user');
   localStorage.removeItem('record');
   loadLoginPage();
+}
+
+function userScores(user){
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+    const currentUserData = JSON.parse(localStorage.getItem('current_user'));
+    const userIndex = users.findIndex(u => u.username === currentUserData.username);
+    if (userIndex !== -1) {
+        let i = 0;
+        for (let game in users[userIndex].scores) {
+            if (document.getElementById(game)) {
+                document.getElementById(game).textContent = users[userIndex].scores[game];
+            }
+            i++;
+        }        
+    }
 }

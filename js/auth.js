@@ -44,7 +44,7 @@ function registerUser(username, password, users) {
         throw new Error("Username already exists. Choose another one.");
     }
 
-    const user = { username, password, scores: 0 };
+    const user = { username, password, scores:{} };
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
 }

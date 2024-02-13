@@ -179,8 +179,18 @@ const removeDroppable = (items) => {
 
 const isCorrect = (solution, content) => {
     if (JSON.stringify(solution) == JSON.stringify(content)) {
-        updateUserScore(50);
+        updateUserScore(50,1);
         return true;
     }
     return false;
+}
+
+function updateUserScore(score,indexGame) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const currentUserData = localStorage.getItem('current_user');
+    const userIndex = users.findIndex(u => u.username === currentUserData.username);
+    if (userIndex !== -1) {
+        users[userIndex].scores['8Puzzle'] = Number(users[i].scores[indexGame-1]) + Number(score);
+    }
+    localStorage.setItem('users', JSON.stringify(users));
 }
