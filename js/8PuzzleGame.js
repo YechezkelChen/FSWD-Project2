@@ -178,8 +178,6 @@ const removeDroppable = (items) => {
 }
 
 const isCorrect = (solution, content) => {
-    updateUserScore(50,1);
-    return true;
     if (JSON.stringify(solution) == JSON.stringify(content)) {
         updateUserScore(50,1);
         return true;
