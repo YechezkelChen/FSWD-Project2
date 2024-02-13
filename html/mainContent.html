@@ -10,10 +10,22 @@
 
 <body>
     <h2>Welcome, <span id="welcome_username"></span>!</h2>
-    <div class="scores">
-        <p><h3>Your Scores: </h3></p>
-        <li>8 Puzzle Game : <span id="8Puzzle"></span></li>
-        <li>Flappy Basket ball Game : <span id="flappy"></span></li>
+    <div class="tabs">
+        <button class="tablink" onclick="openTab(event, 'yourScores')">Your Scores</button>
+        <button class="tablink" onclick="openTab(event, 'userScores')">User Scores</button>
+    </div>
+    
+    <div id="yourScores" class="tabcontent">
+        <h3>Your Scores</h3>
+        <ul>
+            <li>8 Puzzle Game : <span id="8Puzzle"></span></li>
+            <li>Flappy Basket ball Game : <span id="flappy"></span></li>
+        </ul>
+    </div>
+    
+    <div id="userScores" class="tabcontent">
+        <h3>User Scores</h3>
+        <!-- Content for user scores tab goes here -->
     </div>
     <h3>Available Games</h3>
     <div class="games-container">
